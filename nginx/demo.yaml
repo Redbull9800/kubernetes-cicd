@@ -70,4 +70,4 @@ spec:
     name: ssl-issuer
     kind: ClusterIssuer
   dnsNames:
-    - app-test-1.kube-demo-1.clcreative.home
+    - app-test-1.trabas.local
