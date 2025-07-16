@@ -67,7 +67,7 @@ metadata:
 spec:
   secretName: app-test-1-tls-secret
   issuerRef:
-    name: ssl-issuer
+    name: ca-clusterissuer
     kind: ClusterIssuer
   dnsNames:
     - app-test-1.trabas.local
