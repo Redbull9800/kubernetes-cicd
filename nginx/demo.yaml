@@ -42,27 +42,22 @@ spec:
   selector:
     app: app-test-1
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
   name: app-test-1-ingress
   namespace: app-test-1
 spec:
-  rules:
-  - host: "app-test-1.kube-demo-1.clcreative.home"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: app-test-1-svc 
-            port:
-              number: 80
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`app-test-1.trabas.local`)
+      services:
+        - name: app-test-1-svc
+          port: 80
   tls:
-  - hosts:
-    - app-test-1.trabas.local
-    secretName: app-test-1-tls-secret              
+    secretName: app-test-1-tls-secret           
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
